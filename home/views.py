@@ -25,7 +25,8 @@ def gallery (request):
     return render (request,'gallery.html')
 
 def room1 (request):
-    return render (request,'room1.html')
+    sec=rooms.objects.all()
+    return render (request,'room1.html',{'ksec':sec})
 
 #service
 def room (request):

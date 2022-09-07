@@ -77,6 +77,13 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="{% url 'contactpage' %}">Contact Us</a>
                               </li>
+                              <div>
+                                 {% if user.is_authenticated %}
+                                     <a href="{% url 'logoutpage' %}" class="nav-item nav-link">Logout</a>
+                                 {% else %}    
+                                     <a href="{% url 'loginpage' %}" class="nav-item nav-link">Login</a>
+                                 {% endif %}                              
+                              </div>
                            </ul>
                         </div>
                      </nav>
@@ -86,6 +93,9 @@
          </div>
       </header>
       <!-- end header inner -->
+      {% if user.is_authenticated %}
+      <a href="#" class="nav-item nav-link active"><b>Hello, {{user.username}} welcome to AJR Hotels<b></a>
+      {% endif %}
 
 
 
@@ -115,36 +125,21 @@
                </div>
             </div>
             <div class="row">
+               {% for data in ksec %}
                <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
+                  <div id="serv_hover" class="room">
                      <div class="room_img">
-                        <figure><img src="{% static 'images/gallery3.jpg' %}" alt="#"/></figure>
+                        <figure><img src="{{data.img.url}}" alt="#" /></figure>
                      </div>
-                     <div class="bed_room">
-                        <h3>DELUXE</h3>
+                     <div class="col-md-12">
+                        <form action="{% url 'roompage' %}">
+                           <input type="hidden" name="s" value="{{data.id}}">
+                        <button type="submit" class="book_btn">Book Now</button>
+                        </form>
                      </div>
                   </div>
                </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
-                     <div class="room_img">
-                        <figure><img src="{% static 'images/gallery4.jpg' %}" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>CLUB</h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
-                     <div class="room_img">
-                        <figure><img src="{% static 'images/gallery5.jpg' %}" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>SUITE</h3>
-                     </div>
-                  </div>
-               </div>
+               {% endfor %}
             </div>
          </div>
       </div>

@@ -130,6 +130,13 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="{% url 'contactpage' %}">Contact Us</a>
                               </li>
+                              <div>
+                                 {% if user.is_authenticated %}
+                                     <a href="{% url 'logoutpage' %}" class="nav-item nav-link">Logout</a>
+                                 {% else %}    
+                                     <a href="{% url 'loginpage' %}" class="nav-item nav-link">Login</a>
+                                 {% endif %}                              
+                              </div>
                            </ul>
                         </div>
                      </nav>
@@ -139,6 +146,9 @@
          </div>
       </header>
       <!-- end header inner -->
+      {% if user.is_authenticated %}
+      <a href="#" class="nav-item nav-link active"><b>Hello, {{user.username}} welcome to AJR Hotels<b></a>
+      {% endif %}
       <!-- end header -->
       <div class="back_re">
          <div class="container">

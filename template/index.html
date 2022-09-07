@@ -86,8 +86,7 @@
                                   <a href="{% url 'logoutpage' %}" class="nav-item nav-link">Logout</a>
                               {% else %}    
                                   <a href="{% url 'loginpage' %}" class="nav-item nav-link">Login</a>
-                              {% endif %}
-                              
+                              {% endif %}                              
                            </div>
                         
                         </ul>
@@ -139,7 +138,12 @@
             <div class="row">
                <div class="col-md-5">
                   <div class="book_room">
-                     <h1>Book a Room Online</h1>
+                     <div class="col-md-12">
+                        <form action="{% url 'room1page' %}">
+                        <h1>Book a Room Online</h1>
+                        <button type="submit" class="book_btn">Book Now</button>
+                        </form>
+                     </div>
                   </div>
                </div>
             </div>
