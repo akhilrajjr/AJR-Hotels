@@ -18,5 +18,6 @@ urlpatterns = [
     path('reg',views.register,name='regpage'),
     path('confirm',views.booking,name='confirmpage'),
     path('comment/',views.comments,name="comment page"),
+    path('contactus/',views.contactuspg,name="contactus"),
     
 ]

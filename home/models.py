@@ -23,3 +23,14 @@ class comment(models.Model):
     time=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name
+
+
+#contact as 
+class contactus(models.Model):
+    name=models.CharField(max_length=200)
+    mail=models.EmailField()
+    phone=models.CharField(max_length=100)
+    msg=models.TextField()
+    def __str__(self):
+        return self.name
+

@@ -2,9 +2,9 @@
 from django.shortcuts import redirect, render
 from .models import models, rooms
 from django.contrib.auth.models import auth, User
-from .models import comment
+from .models import comment, contactus
 import random
-from datetime import datetime
+from datetime import date, datetime 
 # Create your views here.
 
 
@@ -113,6 +113,8 @@ def booking (request):
         gst = add*18/100
         total= add+gst
         print('hiiiiiiiiiiiii',total,add,gst)
+        
+       
 
         return render(request,'confirm.html',{'nam':username,'cin':checkin,'cot':chectout,'days':days,
         'adults':adults,'price':amt,'add':add,'gst':gst,'total':total,'bkno':bookno,
@@ -131,5 +133,17 @@ def comments(request):
     cmt = comment.objects.create(body=details,name=username,service_id=serviceid)
     cmt.save();
     obj = rooms.objects.get(id=serviceid)
-    #return render(request,'about.html',{'obj': obj})
-    return redirect ('/')
+    return render(request,'room.html',{'obj': obj})
+    
+
+
+#contact functions
+def contactuspg(request):
+    name=request.POST['name']
+    mail=request.POST['mail']
+    phone=request.POST['phone']
+    msg=request.POST['msgs']
+    contus = contactus.objects.create(name=name,mail=mail,phone=phone,msg=msg)
+    contus.save();
+    note= 'We will contact you soon...'
+    return render(request,'contact.html',{'note':note})
