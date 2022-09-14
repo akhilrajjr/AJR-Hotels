@@ -157,7 +157,6 @@
               <tr>
                 <td>
                   User ID : {{nam}}  <br>
-                  User ID : {{first_name}}  <br>
                   Room Type : {{rom}}
                   <br>
                   Check in : {{cin}} <br>
@@ -224,7 +223,12 @@
     </div>
 
     <!-- confirm_room end -->
-     
+      <div class="col-md-12">
+         <form action="{% url 'print' %}" method="post">
+         {% csrf_token %}
+            <button type="submit" class="book_btn">Book Now</button>
+         </form>
+      </div>
       <!--  footer -->
       <footer>
          <div class="footer">
@@ -268,7 +272,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-10 offset-md-1">
-                        <p>© 2022 All Rights Reserved. Design by <a href=""> Akhil Raj J R</a></p>
+                        <p>© 2022 <a href=""> Akhil Raj J R</a></p>
                      </div>
                   </div>
                </div>

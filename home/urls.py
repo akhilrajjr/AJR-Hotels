@@ -19,5 +19,6 @@ urlpatterns = [
     path('confirm',views.booking,name='confirmpage'),
     path('comment/',views.comments,name="comment page"),
     path('contactus/',views.contactuspg,name="contactus"),
+    path('print',views.printpg,name="print"),
     
 ]

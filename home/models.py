@@ -15,7 +15,7 @@ class rooms(models.Model):
     def __str__(self):
         return self.name
 
-
+#comments class
 class comment(models.Model):
     service=models.ForeignKey(rooms,related_name='comments',on_delete=models.CASCADE)
     name=models.CharField(max_length=200)
@@ -33,4 +33,16 @@ class contactus(models.Model):
     msg=models.TextField()
     def __str__(self):
         return self.name
+
+
+#for print page
+class printpage(models.Model):
+    booking=models.CharField(max_length=200)
+    inv=models.CharField(max_length=100)
+    urname=models.CharField(max_length=100)
+    checkin=models.CharField(max_length=100)
+    checkot=models.CharField(max_length=100)
+    amount=models.CharField(max_length=100)
+    def __str__(self):
+        return self.urname
 

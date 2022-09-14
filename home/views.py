@@ -2,7 +2,7 @@
 from django.shortcuts import redirect, render
 from .models import models, rooms
 from django.contrib.auth.models import auth, User
-from .models import comment, contactus
+from .models import comment, contactus, printpage
 import random
 from datetime import date, datetime 
 # Create your views here.
@@ -115,7 +115,8 @@ def booking (request):
         total= add+gst
         print('hiiiiiiiiiiiii',total,add,gst)
         
-       
+        booked = printpage.objects.create(booking=bookno,inv=invno,urname=username,checkin=checkin,checkot=chectout,amount=total)
+        booked.save();
 
         return render(request,'confirm.html',{'nam':username,'cin':checkin,'cot':chectout,'days':days,
         'adults':adults,'price':amt,'add':add,'gst':gst,'total':total,'bkno':bookno,
@@ -148,3 +149,11 @@ def contactuspg(request):
     contus.save();
     note= 'We will contact you soon...'
     return render(request,'contact.html',{'note':note})
+
+
+
+
+# BOOKING PROCESS
+
+def printpg (request):
+    return render(request,'print.html')
